@@ -1,13 +1,13 @@
 {
-	"name": "template-typescript-node-package",
-	"version": "1.27.74",
-	"description": "A quickstart-friendly TypeScript template with comprehensive formatting, linting, releases, testing, and other great tooling built-in. ✨",
+	"name": "@zodactive-form/core",
+	"version": "0.0.0",
+	"description": "The shared functionality of zodactive-form, used by the different adapters.",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/JoshuaKGoldberg/template-typescript-node-package"
+		"url": "https://github.com/Ced-Sharp/zodactive-form-core"
 	},
 	"license": "MIT",
-	"author": "Josh Goldberg <npm@joshuakgoldberg.com>",
+	"author": "Cedrik Dubois <cedascsharp@gmail.com>",
 	"type": "module",
 	"main": "./lib/index.js",
 	"files": [
