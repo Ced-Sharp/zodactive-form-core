@@ -1,3 +1,10 @@
+[npm]: https://img.shields.io/npm/v/@zodactive-form/core
+[npm-url]: https://www.npmjs.com/package/@zodactive-form/core
+[size]: https://packagephobia.now.sh/badge?p=@zodactive-form/core
+[size-url]: https://packagephobia.now.sh/result?p=@zodactive-form/core
+[libera]: https://img.shields.io/badge/libera-manifesto-lightgrey.svg
+[libera-url]: https://liberamanifesto.com
+
 <h1 align="center">Zodactive Form</h1>
 <h2 align="center">Core</h2>
 
@@ -7,16 +14,10 @@
 </p>
 
 <p align="center">
-    [npm]: https://img.shields.io/npm/v/@zodactive-form/core
-    [npm-url]: https://www.npmjs.com/package/@zodactive-form/core
-    [size]: https://packagephobia.now.sh/badge?p=@zodactive-form/core
-    [size-url]: https://packagephobia.now.sh/result?p=@zodactive-form/core
-    [libera]: https://img.shields.io/badge/libera-manifesto-lightgrey.svg
-    [libera-url]: https://liberamanifesto.com
 
-    [![npm][npm]][npm-url]
-    [![size][size]][size-url]
-    [![libera manifesto][libera]][libera-url]
+[![npm][npm]][npm-url]
+[![size][size]][size-url]
+[![libera manifesto][libera]][libera-url]
 
 </p>
 
