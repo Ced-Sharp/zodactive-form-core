@@ -1,147 +1,155 @@
-<h1 align="center">Template TypeScript Node Package</h1>
-
-<p align="center">A quickstart-friendly TypeScript template with comprehensive formatting, linting, releases, testing, and other great tooling built-in. ✨</p>
+<h1 align="center">Zodactive Form</h1>
+<h2 align="center">Core</h2>
 
 <p align="center">
-	<a href="#contributors" target="_blank">
-<!-- prettier-ignore-start -->
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-<img alt="All Contributors: 17" src="https://img.shields.io/badge/all_contributors-17-21bb42.svg" />
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
-<!-- prettier-ignore-end -->
-	</a>
-	<a href="https://codecov.io/gh/JoshuaKGoldberg/template-typescript-node-package" target="_blank">
-		<img alt="Codecov Test Coverage" src="https://codecov.io/gh/JoshuaKGoldberg/template-typescript-node-package/branch/main/graph/badge.svg?token=eVIFY4MhfQ"/>
-	</a>
-	<a href="https://github.com/JoshuaKGoldberg/template-typescript-node-package/blob/main/.github/CODE_OF_CONDUCT.md" target="_blank">
-		<img alt="Contributor Covenant" src="https://img.shields.io/badge/code_of_conduct-enforced-21bb42" />
-	</a>
-	<a href="https://github.com/JoshuaKGoldberg/template-typescript-node-package/blob/main/LICENSE.md" target="_blank">
-	    <img alt="License: MIT" src="https://img.shields.io/github/license/JoshuaKGoldberg/template-typescript-node-package?color=21bb42">
-    </a>
-	<a href="https://github.com/sponsors/JoshuaKGoldberg" target="_blank">
-    	<img alt="Sponsor: On GitHub" src="https://img.shields.io/badge/sponsor-on_github-21bb42.svg" />
-    </a>
-	<img alt="Style: Prettier" src="https://img.shields.io/badge/style-prettier-21bb42.svg" />
-    <img alt="TypeScript: Strict" src="https://img.shields.io/badge/typescript-strict-21bb42.svg" />
+    Zodactive Form aims to provide very simple form reactivity
+    based on the Zod validation library.
 </p>
 
-## Explainer
+<p align="center">
+    [npm]: https://img.shields.io/npm/v/@zodactive-form/core
+    [npm-url]: https://www.npmjs.com/package/@zodactive-form/core
+    [size]: https://packagephobia.now.sh/badge?p=@zodactive-form/core
+    [size-url]: https://packagephobia.now.sh/result?p=@zodactive-form/core
+    [libera]: https://img.shields.io/badge/libera-manifesto-lightgrey.svg
+    [libera-url]: https://liberamanifesto.com
 
-This template is available for anybody who wants to set up a basic Node application using TypeScript.
-It sets up the following tooling for you:
+    [![npm][npm]][npm-url]
+    [![size][size]][size-url]
+    [![libera manifesto][libera]][libera-url]
 
-- [**All Contributors**](https://allcontributors.org): Tracks various kinds of contributions and displays them in a nicely formatted table in the README.md.
-- [**ESLint**](https://eslint.org): Static analysis for JavaScript code, configured with [typescript-eslint](https://typescript-eslint.io) for TypeScript code and other general-use plugins.
-- [**Knip**](https://github.com/webpro/knip): Detects unused files, dependencies, and code exports.
-- [**Markdownlint**](https://github.com/DavidAnson/markdownlint): Static analysis for Markdown code.
-- [**pnpm**](https://pnpm.io): Disk-efficient package manager alternative.
-- [**PR Compliance Action**](https://github.com/mtfoley/pr-compliance-action): Checks PRs for compliance such as addressing a linked issue and proper title formatting.
-- [**Prettier**](https://prettier.io): Opinionated formatting for code, run on file save and as a Git commit hook via [husky](https://typicode.github.io/husky) and [lint-staged](https://github.com/okonet/lint-staged).
-- [**release-it**](https://github.com/release-it/release-it): Generates changelogs, bumps the package version, and publishes to GitHub and npm based on [conventional commits](https://www.conventionalcommits.org).
-- [**Renovate**](https://docs.renovatebot.com): Keeps dependencies up-to-date with PRs, configured to wait a few days after each update for safety.
-- [**TypeScript**](https://typescriptlang.org): A typed superset of JavaScript, configured with strict compiler options.
-- [**Vitest**](https://vitest.dev): Fast unit tests, configured with coverage tracking and [console-fail-test](https://github.com/JoshuaKGoldberg/console-fail-test).
+</p>
 
-## Setup
+## Preface
 
-This package comes with a bootstrap/initialization setup script that fills out your repository's details, installs necessary packages, then removes itself and uninstalls setup dependencies.
+This is not an official Zod library. This is a personal project which is mainly meant
+to be used by my other projects. However, you are free to use it if you find it useful.
 
-First make sure you have the following installed:
+In addition, this library is under development and not all functionality from zod is
+supported yet.
 
-- [GitHub CLI](https://cli.github.com) _(you'll need to be logged in)_
-- [Node.js](https://nodejs.org)
-- [pnpm](https://pnpm.io)
+## Description
 
-To use this template:
+The core library provides the main logic used in zodactive form. It is not reactive by
+itself and requires the use of the proper adapter for the frontend framework being used.
 
-1. Click the [_Use this template_](https://github.com/JoshuaKGoldberg/template-typescript-node-package/generate) button to create a new repository with the same Git history
-2. Open that repository, such as by [cloning it locally](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) or [developing in a codespace](https://docs.github.com/en/codespaces/developing-in-codespaces/developing-in-a-codespace)
-3. Create two tokens in [repository secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets):
-   - `ACCESS_TOKEN`: A [GitHub PAT](https://github.com/settings/tokens/new) with _repo_ permissions
-   - `NPM_TOKEN`: An [npm access token](https://docs.npmjs.com/creating-and-viewing-access-tokens/) with _Automation_ permissions
-4. `pnpm install`
-5. `pnpm run setup` to run the setup script
-6. Install the [Codecov GitHub App](https://github.com/marketplace/codecov) and [Renovate GitHub App](https://github.com/marketplace/renovate)
+Here is a list of planned adapters (these may not be available yet):
 
-> The setup script removes the `## Explainer` and `## Setup` from this README.md.
+- @zodactive-form/react
+- @zodactive-form/preact
+- @zodactive-form/solid
+- @zodactive-form/qwik
+- @zodactive-form/vue
+- @zodactive-form/svelte
+- @zodactive-form/angular
 
-### Setup Options
+## Dependencies
 
-The setup script requires four options to fill out repository details.
-It will interactively prompt for any that are not provided as a string CLI flag:
+This library uses zod to handle validation and my own zod-defaults package to create the
+initial state of the form when no initial data is provided.
 
-1. `repository`: The kebab-case name of the repository (e.g. `template-typescript-node-package`)
-2. `title`: Title Case title for the repository to be used in documentation (e.g. `Template TypeScript Node Package`)
-3. `owner`: GitHub organization or user the repository is underneath (e.g. `JoshuaKGoldberg`)
-4. `description`: Sentence case description of the repository (e.g. `A quickstart-friendly TypeScript package with lots of great repository tooling. ✨`)
+## Installation
 
-Additionally, a `--skip-api` boolean CLI flag may be specified to prevent the setup script from calling to GitHub APIs for repository hydration.
-The script normally posts to GitHub APIs to set information such as repository description and branch protections on github.com.
-Specifying `--skip-api` prevents those API calls, effectively limiting setup changes to local files in Git.
-Doing so can be useful to preview what running setup does.
-
-For example, pre-populating all values and skipping API calls:
+As a simple npm package, it can be installed using your favorite package manager:
 
 ```shell
-pnpm run setup --repository "testing-repository" --title "Testing Title" --owner "TestingOwner" --description "Test Description" --skip-api
+npm install @zodactive-form/core
 ```
 
-> Tip: after running `pnpm run setup` with `--skip-api`, you can always `git add -A; git reset --hard HEAD` to completely reset all changes.
+# Usage
 
-## Usage
+Core expects to be provided with factories allowing it to interact with a wide range of different
+reactivity systems. The following example shows how to use @zodactive-form/core with svelte.
 
-```shell
-npm i template-typescript-node-package
+```svelte
+<script lang="ts">
+import type { FormEventHandler } from "svelte/elements";
+import { z } from "zod";
+import { get, writable, type Writable } from "svelte/store";
+import { useZodactiveForm, type FormFields } from "@zodactive-form/core";
+
+const userSchema = z.object({
+	name: z.string().min(3),
+	age: z.number().min(18),
+});
+
+const createReactive = () => writable();
+const setReactive = <T = unknown>(ref: Writable<T>, value: T) => ref.set(value);
+const getReactive = <T = unknown>(ref: Writable<T>): T => get(ref);
+
+const {
+	assign,
+	form: rawForm,
+	validate,
+	valid: rawValid,
+} = useZodactiveForm({ createReactive, setReactive, getReactive }, userSchema);
+
+const form = rawForm as Writable<FormFields<z.infer<typeof userSchema>>>;
+const valid = rawValid as Writable<boolean>;
+
+const handleSubmit = () => {
+	if (validate()) {
+		// Form is valid!
+		// Do fetch() to api, etc
+	}
+};
+
+const updateForm =
+	(path: string, asNumber = false): FormEventHandler<HTMLInputElement> =>
+	(ev) =>
+		assign(
+			path,
+			asNumber ? parseFloat(ev.currentTarget.value) : ev.currentTarget.value,
+		);
+</script>
+
+<p>The form is currently: {$valid ? 'Valid!' : 'Not valid.'}</p>
+<form on:submit|preventDefault={handleSubmit}>
+  <label>
+    <span>Name</span>
+    <input type="text" value={$form.name.value} on:input={updateForm('name')} />
+    <span class="error">{$form.name.error}</span>
+  </label>
+  <label>
+    <span>Age</span>
+    <input type="number" value={$form.age.value} on:input={updateForm('age', true)} />
+    <span class="error">{$form.age.error}</span>
+  </label>
+  <button type="submit">Submit</button>
+</form>
+
+<style>
+form {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: .5rem;
+}
+
+label {
+  display: flex;
+  flex-flow: column nowrap;
+  place-items: flex-start;
+}
+
+input {
+  width: 100%;
+}
+
+form button:last-child {
+  margin-top: 1rem;
+}
+</style>
 ```
 
-```ts
-import { greet } from "template-typescript-node-package";
+As you can see above, the following is happening:
 
-greet("Hello, world!");
-```
+1. The different factories to access the `writable()` from svelte are created;
+2. The `userSchema` zod schema is defined;
+3. The zodactive form hook is called with the factories and the schema, generating the reactive `form` and `validate` variables;
+4. The form then uses the `.value` and the `.error` to reactively update according to the state of the form;
+5. When a value changes, `assign()` is called to properly update the zodactive form;
+6. When the form is submitted, `validate()` is called to update the errors based on the zod schema;
 
-## Development
+## License
 
-See [`.github/CONTRIBUTING.md`](./.github/CONTRIBUTING.md), then [`.github/DEVELOPMENT.md`](./.github/DEVELOPMENT.md).
-Thanks! 💖
-
-## Contributors
-
-<!-- spellchecker: disable -->
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<table>
-  <tbody>
-    <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/garuna-m6"><img src="https://avatars.githubusercontent.com/u/23234342?v=4?s=100" width="100px;" alt="Anurag"/><br /><sub><b>Anurag</b></sub></a><br /><a href="https://github.com/JoshuaKGoldberg/template-typescript-node-package/commits?author=garuna-m6" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://roe.dev/"><img src="https://avatars.githubusercontent.com/u/28706372?v=4?s=100" width="100px;" alt="Daniel Roe"/><br /><sub><b>Daniel Roe</b></sub></a><br /><a href="https://github.com/JoshuaKGoldberg/template-typescript-node-package/commits?author=danielroe" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/nowyDEV"><img src="https://avatars.githubusercontent.com/u/12304307?v=4?s=100" width="100px;" alt="Dominik Nowik"/><br /><sub><b>Dominik Nowik</b></sub></a><br /><a href="#tool-nowyDEV" title="Tools">🔧</a> <a href="https://github.com/JoshuaKGoldberg/template-typescript-node-package/commits?author=nowyDEV" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/emday4prez"><img src="https://avatars.githubusercontent.com/u/35363144?v=4?s=100" width="100px;" alt="Emerson"/><br /><sub><b>Emerson</b></sub></a><br /><a href="https://github.com/JoshuaKGoldberg/template-typescript-node-package/commits?author=emday4prez" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://sinchang.me"><img src="https://avatars.githubusercontent.com/u/3297859?v=4?s=100" width="100px;" alt="Jeff Wen"/><br /><sub><b>Jeff Wen</b></sub></a><br /><a href="https://github.com/JoshuaKGoldberg/template-typescript-node-package/commits?author=sinchang" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://typescriptcourse.com/tutorials"><img src="https://avatars.githubusercontent.com/u/3806031?v=4?s=100" width="100px;" alt="Joe Previte"/><br /><sub><b>Joe Previte</b></sub></a><br /><a href="https://github.com/JoshuaKGoldberg/template-typescript-node-package/issues?q=author%3Ajsjoeio" title="Bug reports">🐛</a> <a href="https://github.com/JoshuaKGoldberg/template-typescript-node-package/commits?author=jsjoeio" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://blog.johnnyreilly.com/"><img src="https://avatars.githubusercontent.com/u/1010525?v=4?s=100" width="100px;" alt="John Reilly"/><br /><sub><b>John Reilly</b></sub></a><br /><a href="https://github.com/JoshuaKGoldberg/template-typescript-node-package/commits?author=johnnyreilly" title="Code">💻</a></td>
-    </tr>
-    <tr>
-      <td align="center" valign="top" width="14.28%"><a href="http://www.joshuakgoldberg.com"><img src="https://avatars.githubusercontent.com/u/3335181?v=4?s=100" width="100px;" alt="Josh Goldberg"/><br /><sub><b>Josh Goldberg</b></sub></a><br /><a href="https://github.com/JoshuaKGoldberg/template-typescript-node-package/issues?q=author%3AJoshuaKGoldberg" title="Bug reports">🐛</a> <a href="https://github.com/JoshuaKGoldberg/template-typescript-node-package/commits?author=JoshuaKGoldberg" title="Code">💻</a> <a href="#maintenance-JoshuaKGoldberg" title="Maintenance">🚧</a> <a href="https://github.com/JoshuaKGoldberg/template-typescript-node-package/pulls?q=is%3Apr+reviewed-by%3AJoshuaKGoldberg" title="Reviewed Pull Requests">👀</a> <a href="#tool-JoshuaKGoldberg" title="Tools">🔧</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://webpro.nl"><img src="https://avatars.githubusercontent.com/u/456426?v=4?s=100" width="100px;" alt="Lars Kappert"/><br /><sub><b>Lars Kappert</b></sub></a><br /><a href="https://github.com/JoshuaKGoldberg/template-typescript-node-package/commits?author=webpro" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://navinmoorthy.me/"><img src="https://avatars.githubusercontent.com/u/39694575?v=4?s=100" width="100px;" alt="Navin Moorthy"/><br /><sub><b>Navin Moorthy</b></sub></a><br /><a href="https://github.com/JoshuaKGoldberg/template-typescript-node-package/issues?q=author%3Anavin-moorthy" title="Bug reports">🐛</a> <a href="https://github.com/JoshuaKGoldberg/template-typescript-node-package/commits?author=navin-moorthy" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/NazCodeland"><img src="https://avatars.githubusercontent.com/u/113494366?v=4?s=100" width="100px;" alt="NazCodeland"/><br /><sub><b>NazCodeland</b></sub></a><br /><a href="https://github.com/JoshuaKGoldberg/template-typescript-node-package/commits?author=NazCodeland" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://paulisaweso.me/"><img src="https://avatars.githubusercontent.com/u/6335792?v=4?s=100" width="100px;" alt="Paul Esch-Laurent"/><br /><sub><b>Paul Esch-Laurent</b></sub></a><br /><a href="https://github.com/JoshuaKGoldberg/template-typescript-node-package/commits?author=Pinjasaur" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/RebeccaStevens"><img src="https://avatars.githubusercontent.com/u/7224206?v=4?s=100" width="100px;" alt="Rebecca Stevens"/><br /><sub><b>Rebecca Stevens</b></sub></a><br /><a href="https://github.com/JoshuaKGoldberg/template-typescript-node-package/commits?author=RebeccaStevens" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://linktr.ee/ronbraha"><img src="https://avatars.githubusercontent.com/u/45559220?v=4?s=100" width="100px;" alt="Ron Braha"/><br /><sub><b>Ron Braha</b></sub></a><br /><a href="https://github.com/JoshuaKGoldberg/template-typescript-node-package/commits?author=RNR1" title="Code">💻</a></td>
-    </tr>
-    <tr>
-      <td align="center" valign="top" width="14.28%"><a href="http://ronjeanfrancois.com"><img src="https://avatars.githubusercontent.com/u/105710107?v=4?s=100" width="100px;" alt="Ron Jean-Francois"/><br /><sub><b>Ron Jean-Francois</b></sub></a><br /><a href="https://github.com/JoshuaKGoldberg/template-typescript-node-package/commits?author=ronthetech" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/the-lazy-learner"><img src="https://avatars.githubusercontent.com/u/13695177?v=4?s=100" width="100px;" alt="Sudhansu"/><br /><sub><b>Sudhansu</b></sub></a><br /><a href="https://github.com/JoshuaKGoldberg/template-typescript-node-package/commits?author=the-lazy-learner" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/TAKANOME-DEV"><img src="https://avatars.githubusercontent.com/u/79809121?v=4?s=100" width="100px;" alt="takanomedev"/><br /><sub><b>takanomedev</b></sub></a><br /><a href="https://github.com/JoshuaKGoldberg/template-typescript-node-package/commits?author=TAKANOME-DEV" title="Code">💻</a></td>
-    </tr>
-  </tbody>
-</table>
-
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-<!-- spellchecker: enable -->
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
