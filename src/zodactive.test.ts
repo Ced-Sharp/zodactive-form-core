@@ -10,11 +10,13 @@ const opts = { createReactive, setReactive, getReactive };
 
 const userSchema = z.object({
 	username: z.string().min(3),
+	displayName: z.string().min(3).optional(),
 	age: z.number().min(18, "User is too young").max(99, "User is too old"),
 });
 
 const userSchemaValid = z.object({
 	username: z.string().min(3).default("John"),
+	displayName: z.string().min(3).default("John"),
 	age: z.number().min(18).max(99).default(36),
 });
 
@@ -49,6 +51,44 @@ describe("Zodactive Core", () => {
 				age: 20,
 			});
 			expect(valid).toHaveProperty("value", true);
+		});
+
+		it("should be valid when initialized with valid data and optional data is missing", () => {
+			const { valid } = useZodactiveForm(opts, userSchema, {
+				username: "John",
+				age: 20,
+			});
+
+			expect(valid).toHaveProperty("value", true);
+		});
+
+		it("should be invalid when initialized with valid data and optional data is provided, but invalid", () => {
+			const { valid } = useZodactiveForm(opts, userSchema, {
+				username: "John",
+				displayName: "",
+				age: 20,
+			});
+
+			expect(valid).toHaveProperty("value", false);
+		});
+
+		it("should be valid when initialized with valid data and valid optional data", () => {
+			const { valid } = useZodactiveForm(opts, userSchema, {
+				username: "John",
+				displayName: "John",
+				age: 20,
+			});
+
+			expect(valid).toHaveProperty("value", true);
+		});
+
+		it("should not contain optional properties if they do not define default values", () => {
+			const { form } = useZodactiveForm(opts, userSchema);
+			expect(form.value).toMatchObject({
+				username: { value: "", error: "" },
+				displayName: { value: undefined, error: "" },
+				age: { value: 0, error: "" },
+			});
 		});
 	});
 
