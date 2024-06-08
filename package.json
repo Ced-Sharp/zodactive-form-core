@@ -8,7 +8,6 @@
 	},
 	"license": "MIT",
 	"author": "Josh Goldberg <npm@joshuakgoldberg.com>",
-	"type": "module",
 	"main": "./lib/index.js",
 	"types": "./lib/types.d.ts",
 	"files": [
