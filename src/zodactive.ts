@@ -75,12 +75,13 @@ export const useZodactiveForm = <
 	};
 
 	const getFieldByPath = (path: string[]) => {
+		const _path = [...path];
 		const fullPath = path.join(".");
 		let currentField = getRef(formRef) as Record<string, unknown>;
 		let schemaField = getObj(schema).shape;
 
-		while (path.length > 0) {
-			const name = path.shift()!;
+		while (_path.length > 0) {
+			const name = _path.shift()!;
 			if (!(name in currentField)) {
 				// Field might be optional
 				if (name in schemaField) {
