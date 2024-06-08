@@ -185,5 +185,6 @@ export const useZodactiveForm = <
 		clearErrors,
 		validate,
 		toJson,
+		getFieldByPath,
 	};
 };
