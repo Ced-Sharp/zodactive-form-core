@@ -1,6 +1,6 @@
 {
 	"name": "@zodactive-form/core",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"description": "The shared functionality of zodactive-form, used by the different adapters.",
 	"repository": {
 		"type": "git",
@@ -16,7 +16,7 @@
 		"README.md"
 	],
 	"scripts": {
-		"build": "tsc && babel lib -d lib",
+		"build": "tsc",
 		"format": "prettier \"**/*\" --ignore-unknown",
 		"format:write": "pnpm format --write",
 		"lint": "eslint . --max-warnings 0 --report-unused-disable-directives",
