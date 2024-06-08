@@ -121,9 +121,14 @@ export const useZodactiveForm = <
 			setRef(validRef, true);
 			return true;
 		} catch (error) {
-			if (error instanceof ZodError) {
+			// NOTE: Using name, because zod classes may differ at when used in
+			//       a different project.
+			if (
+				typeof error === "object" &&
+				error?.constructor?.name === ZodError.name
+			) {
 				const fields = getRef(formRef) as FormFields<Record<string, unknown>>;
-				const errors = error.flatten();
+				const errors = (error as ZodError).flatten();
 
 				Object.entries(errors.fieldErrors).forEach(([name, msg]) => {
 					fields[name].error = msg?.length ? msg[0]! : "";

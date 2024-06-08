@@ -1,4 +1,7 @@
+.idea/
+.vscode/
 coverage/
 lib/
 node_modules/
 bun.lockb
+pnpm-lock.yaml
