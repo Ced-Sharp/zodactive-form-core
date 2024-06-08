@@ -1,10 +1,17 @@
 import { ZodError, z } from "zod";
 import { getDefaultsForSchema } from "zod-defaults";
 import type { FormFields, ZodactiveOptions } from "./types.js";
-import { objectToFormFields } from "./utils.js";
+import {
+	objectToFormFields,
+	getObj,
+	type Obj,
+	type ObjEffect,
+} from "./utils.js";
 
 export const useZodactiveForm = <
-	S extends z.ZodObject<z.ZodRawShape>,
+	S extends
+		| z.ZodObject<z.ZodRawShape>
+		| z.ZodEffects<z.ZodObject<z.ZodRawShape>>,
 	R = unknown
 >(
 	options: ZodactiveOptions<R>,
@@ -70,12 +77,35 @@ export const useZodactiveForm = <
 	const getFieldByPath = (path: string[]) => {
 		const fullPath = path.join(".");
 		let currentField = getRef(formRef) as Record<string, unknown>;
+		let schemaField = getObj(schema).shape;
+
 		while (path.length > 0) {
 			const name = path.shift()!;
 			if (!(name in currentField)) {
-				throw new Error(`Failed to assign form field "${fullPath}".`);
+				// Field might be optional
+				if (name in schemaField) {
+					const objField = schemaField[name as keyof typeof schemaField];
+					if (objField!.constructor.name === z.ZodOptional.name) {
+						// Field is optional, assign to it
+						currentField[name] = { value: undefined, error: "" };
+					} else {
+						throw new Error(`Failed to assign form field "${fullPath}".`);
+					}
+				} else {
+					throw new Error(`Failed to assign form field "${fullPath}".`);
+				}
 			}
+
 			currentField = currentField[name] as Record<string, unknown>;
+
+			const maybeNextField = schemaField[name as keyof typeof schemaField];
+			if (
+				(maybeNextField && "shape" in maybeNextField) ||
+				"_def" in maybeNextField
+			) {
+				const nextField = maybeNextField as Obj | ObjEffect;
+				schemaField = getObj(nextField).shape;
+			}
 		}
 		return currentField;
 	};

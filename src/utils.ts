@@ -1,6 +1,17 @@
 import { z } from "zod";
 import type { FormFields } from "./types.js";
 
+export type Obj = z.ZodObject<z.ZodRawShape>;
+export type ObjEffect = z.ZodEffects<Obj>;
+
+export const getObj = <S extends Obj | ObjEffect>(def: S) => {
+	if (def.constructor.name === z.ZodEffects.name) {
+		return (def as ObjEffect)._def.schema;
+	} else {
+		return def as Obj;
+	}
+};
+
 /**
  * Checks if a given field is an object type in Zod schema.
  *
@@ -28,18 +39,19 @@ export const isFieldAnObject = (
  */
 export const objectToFormFields = <
 	T extends Record<string, unknown>,
-	S extends z.ZodObject<z.ZodRawShape>
+	S extends Obj | ObjEffect
 >(
 	object: T,
 	schema: S
 ): FormFields<T> =>
 	Object.fromEntries(
 		Object.entries(object).map(([field, value]) => {
-			const fieldType = schema.shape[field];
+			const _shape = getObj(schema).shape;
+			const fieldType = _shape[field];
 			if (!isFieldAnObject(fieldType)) return [field, { value, error: "" }];
 			const composedValue = objectToFormFields(
 				value as z.infer<typeof fieldType>,
-				schema.shape[field] as z.ZodObject<z.ZodRawShape>
+				_shape[field] as Obj
 			);
 			return [field, composedValue];
 		})

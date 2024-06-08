@@ -86,7 +86,6 @@ describe("Zodactive Core", () => {
 			const { form } = useZodactiveForm(opts, userSchema);
 			expect(form.value).toMatchObject({
 				username: { value: "", error: "" },
-				displayName: { value: undefined, error: "" },
 				age: { value: 0, error: "" },
 			});
 		});
@@ -214,6 +213,23 @@ describe("Zodactive Core", () => {
 			expect(form.value).toMatchObject({ title: { value: "", error: "" } });
 			assign("title", "Hello");
 			validate();
+			expect(valid.value).toBe(true);
+		});
+
+		it("should be valid when optional fields are not provided, but assigned to", () => {
+			const schema = z.object({
+				title: z.string().min(3),
+				slug: z.string().min(3).optional(),
+			});
+			const { form, valid, assign, validate } = useZodactiveForm(opts, schema);
+
+			expect(form.value).toMatchObject({ title: { value: "", error: "" } });
+
+			assign("title", "yes");
+			assign("slug", "yes");
+
+			validate();
+
 			expect(valid.value).toBe(true);
 		});
 
