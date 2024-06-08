@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { z } from "zod";
-import { useZodactiveForm } from "./zodactive";
+import { useZodactiveForm } from "./zodactive.js";
 
 const createReactive = () => ({ value: null });
 const setReactive = (ref: { value: unknown }, value: unknown) =>

@@ -1,7 +1,7 @@
 import { ZodError, z } from "zod";
 import { getDefaultsForSchema } from "zod-defaults";
-import type { FormFields, ZodactiveOptions } from "./types";
-import { objectToFormFields } from "./utils";
+import type { FormFields, ZodactiveOptions } from "./types.js";
+import { objectToFormFields } from "./utils.js";
 
 export const useZodactiveForm = <
 	S extends z.ZodObject<z.ZodRawShape>,

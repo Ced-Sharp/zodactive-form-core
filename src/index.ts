@@ -1,2 +1,2 @@
-export * from "./types";
-export { useZodactiveForm } from "./zodactive";
+export * from "./types.js";
+export { useZodactiveForm } from "./zodactive.js";

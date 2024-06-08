@@ -7,9 +7,8 @@
 		"url": "https://github.com/Ced-Sharp/zodactive-form-core"
 	},
 	"license": "MIT",
-	"author": "Josh Goldberg <npm@joshuakgoldberg.com>",
+	"author": "CedSharp <cedascsharp@gmail.com>",
 	"main": "./lib/index.js",
-	"types": "./lib/types.d.ts",
 	"files": [
 		"lib/**",
 		"package.json",
@@ -39,9 +38,6 @@
 		"zod-defaults": "^0.0.8"
 	},
 	"devDependencies": {
-		"@babel/cli": "^7.24.7",
-		"@babel/core": "^7.24.7",
-		"@babel/preset-env": "^7.24.7",
 		"@clack/prompts": "^0.6.3",
 		"@types/eslint": "^8.21.1",
 		"@types/jest": "^29.5.12",
@@ -49,7 +45,6 @@
 		"@typescript-eslint/parser": "^5.48.2",
 		"@vitest/coverage-istanbul": "^0.31.0",
 		"all-contributors-cli": "^6.24.0",
-		"babel-plugin-add-import-extension": "^1.6.0",
 		"chalk": "^5.2.0",
 		"console-fail-test": "^0.2.1",
 		"cspell": "^6.19.2",

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import type { FormFields } from "./types";
+import type { FormFields } from "./types.js";
 
 /**
  * Checks if a given field is an object type in Zod schema.
