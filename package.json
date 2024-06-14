@@ -1,6 +1,6 @@
 {
 	"name": "@zodactive-form/core",
-	"version": "0.0.12",
+	"version": "0.0.13",
 	"description": "The shared functionality of zodactive-form, used by the different adapters.",
 	"repository": {
 		"type": "git",
