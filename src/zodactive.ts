@@ -26,9 +26,11 @@ export const useZodactiveForm = <
 	const initialFields = objectToFormFields(initialValue, schema);
 
 	const validRef = create();
+	const formErrorsRef = create();
 	const formRef = create();
 
 	setRef(validRef, false);
+	setRef(formErrorsRef, []);
 	setRef(formRef, initialFields);
 
 	const forEachFields = (
@@ -134,6 +136,7 @@ export const useZodactiveForm = <
 	 * Removes any error states from the form.
 	 */
 	const clearErrors = () => {
+		setRef(formErrorsRef, []);
 		const fields = getRef(formRef) as FormFields<Record<string, unknown>>;
 		forEachFields(fields, (field) => (field.error = ""));
 		setRef(formRef, getRef(formRef));
@@ -165,6 +168,7 @@ export const useZodactiveForm = <
 					fields[name].error = msg?.length ? msg[0]! : "";
 				});
 
+				setRef(formErrorsRef, [...errors.formErrors]);
 				setRef(formRef, getRef(formRef));
 				setRef(validRef, false);
 				return false;
@@ -180,6 +184,7 @@ export const useZodactiveForm = <
 
 	return {
 		form: formRef,
+		formErrors: formErrorsRef,
 		valid: validRef,
 		assign,
 		clear,

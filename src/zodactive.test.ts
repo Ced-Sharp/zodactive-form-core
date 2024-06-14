@@ -277,5 +277,34 @@ describe("Zodactive Core", () => {
 			});
 			expect(valid.value).toBe(true);
 		});
+
+		it("should be invalid if the schema has a refinement that returns false", () => {
+			const schema = z
+				.object({
+					password: z.string().min(3, "3!"),
+					confirmPassword: z.string().min(3, "3!"),
+				})
+				.refine((obj) => obj.password === obj.confirmPassword, "confirm!");
+
+			const { formErrors, valid, assign, validate } = useZodactiveForm(
+				opts,
+				schema
+			);
+
+			expect(valid.value).toBe(false);
+
+			assign("password", "123");
+			assign("confirmPassword", "321");
+
+			validate();
+			expect(valid.value).toBe(false);
+			expect(formErrors.value).toEqual(["confirm!"]);
+
+			assign("confirmPassword", "123");
+
+			validate();
+			expect(valid.value).toBe(true);
+			expect(formErrors.value).toEqual([]);
+		});
 	});
 });
