@@ -5,3 +5,5 @@ lib/
 node_modules/
 bun.lockb
 pnpm-lock.yaml
+dist/
+types/

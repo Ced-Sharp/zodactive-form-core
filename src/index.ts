@@ -1,3 +1,4 @@
 export { useZodactiveForm } from "./zodactive";
-export * from "./types";
-export * from "./utils";
+export type { FormFields, ZodactiveOptions } from "./types";
+export type { Obj, ObjEffect } from "./utils";
+export { getObj, isFieldAnObject, objectToFormFields } from "./utils";
