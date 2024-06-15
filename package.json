@@ -9,6 +9,14 @@
   "license": "MIT",
   "author": "CedSharp <cedascsharp@gmail.com>",
   "type": "module",
+  "main": "./dist/zodactive-form.umd.js",
+  "module": "./dist/zodactive-form.js",
+  "exports": {
+    ".": {
+      "import": "./dist/zodactive-form.js",
+      "require": "./dist/zodactive-form.umd.js"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "prebuild": "rimraf dist && npm run lint && npm run test",
@@ -22,7 +30,7 @@
     "zod": "^3.23.8"
   },
   "dependencies": {
-    "zod-defaults": "^0.0.10"
+    "zod-defaults": "^0.1.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.8.1",
