@@ -36,13 +36,13 @@ itself and requires the use of the proper adapter for the frontend framework bei
 
 Here is a list of planned adapters (these may not be available yet):
 
-- @zodactive-form/react
-- @zodactive-form/preact
-- @zodactive-form/solid
-- @zodactive-form/qwik
-- @zodactive-form/vue
-- @zodactive-form/svelte
-- @zodactive-form/angular
+- [ ] @zodactive-form/react
+- [ ] @zodactive-form/preact
+- [ ] @zodactive-form/solid
+- [ ] @zodactive-form/qwik
+- [x] [@zodactive-form/vue](https://npmjs.com/package/@zodactive-form/vue)
+- [ ] @zodactive-form/svelte
+- [ ] @zodactive-form/angular
 
 ## Dependencies
 
