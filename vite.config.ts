@@ -10,13 +10,7 @@ export default defineConfig({
         format === "es" ? "zodactive-form.js" : "zodactive-form.umd.js",
     },
     rollupOptions: {
-      external: ["zod"],
-      output: {
-        inlineDynamicImports: true,
-        globals: {
-          zod: "zod",
-        },
-      },
+      external: ["zod", "zod-defaults"],
     },
     sourcemap: false,
   },

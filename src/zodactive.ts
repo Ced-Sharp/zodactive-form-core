@@ -120,6 +120,7 @@ export const useZodactiveForm = <
 
   const assign = (path: string | string[], value: unknown) => {
     const field = getFieldByPath(normalizePath(path));
+    console.log("assign:", path, field);
     field.value = value;
     setRef(formRef, getRef(formRef));
   };
