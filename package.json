@@ -1,6 +1,6 @@
 {
   "name": "@zodactive-form/core",
-  "version": "0.0.14",
+  "version": "0.1.0",
   "description": "The shared functionality of @zodactive-form packages",
   "repository": {
     "type": "git",
