@@ -6,32 +6,32 @@
  * @template T - The type of the reactive class, using <unknown> if possible.
  */
 export interface ZodactiveOptions<T = unknown> {
-	/**
-	 * Instantiate and return a new reactive instance.
-	 *
-	 * ex: `() => ref<T>()`
-	 * ex: `() => writable<T>()`
-	 *
-	 * @template T - The type of the reactive object
-	 * @returns {unknown} - The created reactive object
-	 */
-	createReactive: () => T;
+  /**
+   * Instantiate and return a new reactive instance.
+   *
+   * ex: `() => ref<T>()`
+   * ex: `() => writable<T>()`
+   *
+   * @template T - The type of the reactive object
+   * @returns {unknown} - The created reactive object
+   */
+  createReactive: () => T;
 
-	/**
-	 * Retrieves a value from a reactive object.
-	 *
-	 * @param ref - The reference object
-	 * @returns The retrieved value
-	 */
-	getReactive: (ref: T) => unknown;
+  /**
+   * Retrieves a value from a reactive object.
+   *
+   * @param ref - The reference object
+   * @returns The retrieved value
+   */
+  getReactive: (ref: T) => unknown;
 
-	/**
-	 * Sets the value of a reactive object.
-	 *
-	 * @param ref - The reference object
-	 * @param value - The new value to update
-	 */
-	setReactive: (ref: T, value: unknown) => void;
+  /**
+   * Sets the value of a reactive object.
+   *
+   * @param ref - The reference object
+   * @param value - The new value to update
+   */
+  setReactive: (ref: T, value: unknown) => void;
 }
 
 /**
@@ -42,7 +42,7 @@ export interface ZodactiveOptions<T = unknown> {
  * @template T - The object type for which form fields are defined
  */
 export type FormFields<T extends Record<string, unknown>> = {
-	[K in keyof T]: T[K] extends Record<string, unknown>
-		? FormFields<T[K]>
-		: { value: T[K]; error: string };
+  [K in keyof T]: T[K] extends Record<string, unknown>
+    ? FormFields<T[K]>
+    : { value: T[K]; error: string };
 };
