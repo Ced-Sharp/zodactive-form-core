@@ -1,8 +1,13 @@
 [npm]: https://img.shields.io/npm/v/@zodactive-form/core
+
 [npm-url]: https://www.npmjs.com/package/@zodactive-form/core
+
 [size]: https://packagephobia.now.sh/badge?p=@zodactive-form/core
+
 [size-url]: https://packagephobia.now.sh/result?p=@zodactive-form/core
+
 [libera]: https://img.shields.io/badge/libera-manifesto-lightgrey.svg
+
 [libera-url]: https://liberamanifesto.com
 
 <h1 align="center">Zodactive Form</h1>
@@ -38,10 +43,10 @@ Here is a list of planned adapters (these may not be available yet):
 
 - [ ] @zodactive-form/react
 - [ ] @zodactive-form/preact
-- [ ] @zodactive-form/solid
+- [x] [@zodactive-form/solid](https://npmjs.com/package/@zodactive-form/solid)
 - [ ] @zodactive-form/qwik
 - [x] [@zodactive-form/vue](https://npmjs.com/package/@zodactive-form/vue)
-- [ ] @zodactive-form/svelte
+- [x] [@zodactive-form/svelte](https://npmjs.com/package/@zodactive-form/svelte)
 - [ ] @zodactive-form/angular
 
 ## Dependencies
@@ -146,7 +151,8 @@ As you can see above, the following is happening:
 
 1. The different factories to access the `writable()` from svelte are created;
 2. The `userSchema` zod schema is defined;
-3. The zodactive form hook is called with the factories and the schema, generating the reactive `form` and `validate` variables;
+3. The zodactive form hook is called with the factories and the schema, generating the reactive `form` and `validate`
+   variables;
 4. The form then uses the `.value` and the `.error` to reactively update according to the state of the form;
 5. When a value changes, `assign()` is called to properly update the zodactive form;
 6. When the form is submitted, `validate()` is called to update the errors based on the zod schema;
