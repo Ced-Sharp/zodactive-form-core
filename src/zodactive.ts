@@ -2,6 +2,7 @@ import { ZodError, z } from "zod";
 import { getDefaultsForSchema } from "zod-defaults";
 import type { FormFields, ZodactiveOptions } from "./types";
 import { type Obj, type ObjEffect, getObj, objectToFormFields } from "./utils";
+import { normalize } from "path";
 
 export const useZodactiveForm = <
   S extends
@@ -118,6 +119,20 @@ export const useZodactiveForm = <
     return [path];
   };
 
+  const normalizeZodIssuePath = (path: Array<string | number>): string[] => {
+    const normalized = [];
+
+    for (const item of path) {
+      if (typeof item === "string") {
+        normalized.push(item);
+      } else {
+        break;
+      }
+    }
+
+    return normalized;
+  };
+
   const assign = (path: string | string[], value: unknown) => {
     const field = getFieldByPath(normalizePath(path));
     field.value = value;
@@ -162,13 +177,25 @@ export const useZodactiveForm = <
         typeof error === "object" &&
         error?.constructor?.name === ZodError.name
       ) {
-        const fields = getRef(formRef) as FormFields<Record<string, unknown>>;
         const errors = (error as ZodError).flatten();
 
-        for (const name in errors.fieldErrors) {
-          const msg = errors.fieldErrors[name];
-          fields[name].error = msg?.length ? msg[0] : "";
+        for (const issue of (error as ZodError).issues) {
+          const fieldPath = normalizeZodIssuePath(issue.path);
+          const field = getFieldByPath(fieldPath);
+
+          if (!("error" in field)) {
+            console.warn(
+              `Zodactive Error: Attempting to set error on field ${fieldPath.join(".")}, but it does not appear to be a valid Zodactive Field!`,
+            );
+          }
+
+          field.error = issue.message;
         }
+
+        //for (const name in errors.fieldErrors) {
+        //  const msg = errors.fieldErrors[name];
+        //  fields[name].error = msg?.length ? msg[0] : "";
+        //}
 
         setRef(formErrorsRef, [...errors.formErrors]);
         setRef(formRef, getRef(formRef));

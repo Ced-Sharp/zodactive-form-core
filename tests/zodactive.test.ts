@@ -279,6 +279,43 @@ describe("Zodactive Core", () => {
       expect(valid.value).toBe(true);
     });
 
+    it("should be invalid if nested objects are invalid", () => {
+      const schema = z.object({
+        user: z.object({
+          name: z.string().min(3, "3!"),
+          age: z.number().min(18, "18!"),
+        }),
+        job: z.string().min(3, "3!"),
+      });
+
+      const { valid, form, assign, validate } = useZodactiveForm(opts, schema);
+
+      expect(validate()).toBe(false);
+      expect(valid.value).toBe(false);
+
+      expect(form.value).toMatchObject({
+        user: {
+          name: { value: "", error: "3!" },
+          age: { value: 0, error: "18!" },
+        },
+        job: { value: "", error: "3!" },
+      });
+
+      assign("user.name", "User");
+      assign("user.age", 20);
+      assign("job", "Adventurer");
+
+      expect(validate()).toBe(true);
+
+      expect(form.value).toMatchObject({
+        user: {
+          name: { value: "User", error: "" },
+          age: { value: 20, error: "" },
+        },
+        job: { value: "Adventurer", error: "" },
+      });
+    });
+
     it("should be invalid if the schema has a refinement that returns false", () => {
       const schema = z
         .object({
