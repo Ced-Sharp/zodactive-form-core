@@ -41,7 +41,7 @@ itself and requires the use of the proper adapter for the frontend framework bei
 
 Here is a list of planned adapters (these may not be available yet):
 
-- [ ] @zodactive-form/react
+- [x] [@zodactive-form/react](https://www.npmjs.com/package/@zodactive-form/react)
 - [ ] @zodactive-form/preact
 - [x] [@zodactive-form/solid](https://npmjs.com/package/@zodactive-form/solid)
 - [ ] @zodactive-form/qwik
